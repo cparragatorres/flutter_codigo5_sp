@@ -52,20 +52,23 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: getName(),
+        future: getProducts(),
         builder: (BuildContext context, AsyncSnapshot snapshot){
 
           if(snapshot.hasData){
-            return Center(
-              child: Text(snapshot.data),
+            List<String> lista = snapshot.data;
+            return ListView.builder(
+              itemCount: lista.length,
+              itemBuilder: (BuildContext context, int index){
+                return ListTile(
+                  title: Text(lista[index]),
+                );
+              },
             );
           }
-
           return const Center(
             child: CircularProgressIndicator(),
           );
-
-
         },
       ),
     );
