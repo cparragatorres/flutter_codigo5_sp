@@ -27,9 +27,7 @@ class _HomePageState extends State<HomePage> {
 
     nombre = await getName();
     setState(() {
-
     });
-
   }
 
   Future<String> getName() async {
@@ -38,11 +36,37 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  Future<List<String>> getProducts() async {
+    return Future.delayed(Duration(seconds: 3),(){
+      return [
+        "Corbatas",
+        "Camisas",
+        "Polos",
+        "Sacos"
+      ];
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(nombre),
+      body: FutureBuilder(
+        future: getName(),
+        builder: (BuildContext context, AsyncSnapshot snapshot){
+
+          if(snapshot.hasData){
+            return Center(
+              child: Text(snapshot.data),
+            );
+          }
+
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+
+
+        },
       ),
     );
   }
