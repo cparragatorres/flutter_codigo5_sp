@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,6 +17,19 @@ class _HomePageState extends State<HomePage> {
       return 100;
     });
   }
+
+  _saveData() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString("name", "Ramón Lopez Arias");
+    prefs.setInt("age", 20);
+    print("Guardando...");
+    String name = prefs.getString("name") ?? "-";
+    int age = prefs.getInt("age") ?? 0;
+    print(name);
+    print(age);
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +155,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                   primary: Colors.black87,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  _saveData();
+                },
                 label: const Text(
                   "Save data",
                 ),
