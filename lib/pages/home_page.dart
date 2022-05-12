@@ -29,47 +29,76 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.pinkAccent,
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                        "https://images.pexels.com/photos/1145720/pexels-photo-1145720.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"),
-                  ),
+              decoration: const BoxDecoration(
+                color: Colors.pinkAccent,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                      "https://images.pexels.com/photos/1145720/pexels-photo-1145720.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"),
                 ),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      CircleAvatar(
-                        radius: 28,
-                        backgroundImage: NetworkImage(
-                            "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"),
-                      ),
-                      SizedBox(
-                        height: 6.0,
-                      ),
-                      Text(
-                        "Juan Ramón Lopez",
-                        style: TextStyle(
+              ),
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: const [
+                    CircleAvatar(
+                      radius: 28,
+                      backgroundImage: NetworkImage(
+                          "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"),
+                    ),
+                    SizedBox(
+                      height: 6.0,
+                    ),
+                    Text(
+                      "Juan Ramón Lopez",
+                      style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w400,
-                          fontSize: 18.0
-                        ),
+                          fontSize: 18.0),
+                    ),
+                    Text(
+                      "Administrador",
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14.0,
                       ),
-                      Text(
-                        "Administrador",
-                        style: TextStyle(
-                            color: Colors.white70,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14.0
-                        ),
-                      ),
-                    ],
-                  ),
-                )),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.person,
+              ),
+              title: Text("My Profile"),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.file_copy,
+              ),
+              title: Text("Portfolio"),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.lock,
+              ),
+              title: Text("Change Password"),
+            ),
+            Divider(
+              thickness: 0.6,
+              indent: 12,
+              endIndent: 12,
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.exit_to_app,
+              ),
+              title: Text("Logout"),
+            ),
           ],
         ),
       ),
