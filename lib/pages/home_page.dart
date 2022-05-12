@@ -102,6 +102,38 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Settings",
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.w500,
+                color: Color(0xff424242),
+              ),
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                hintText: "Full name"
+              ),
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                  hintText: "Address"
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
