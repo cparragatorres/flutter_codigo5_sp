@@ -13,6 +13,10 @@ class _HomePageState extends State<HomePage> {
   //async - await
 
   int n = 10;
+  TextEditingController _fullNameController = TextEditingController();
+  TextEditingController _addressController = TextEditingController();
+
+
 
   @override
   initState(){
@@ -29,15 +33,15 @@ class _HomePageState extends State<HomePage> {
 
   _saveData() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString("name", "Ramón Lopez Arias");
-    prefs.setInt("age", 20);
+    prefs.setString("fullName", _fullNameController.text);
+    prefs.setString("address", _addressController.text);
     print("Guardando...");
   }
 
   _getDataFull() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    print(prefs.getString("name"));
-    print(prefs.getInt("age"));
+    print(prefs.getString("fullName"));
+    print(prefs.getString("address"));
   }
 
 
@@ -143,12 +147,14 @@ class _HomePageState extends State<HomePage> {
               height: 10.0,
             ),
             TextField(
+              controller: _fullNameController,
               decoration: InputDecoration(hintText: "Full name"),
             ),
             const SizedBox(
               height: 20.0,
             ),
             TextField(
+              controller: _addressController,
               decoration: InputDecoration(hintText: "Address"),
             ),
             const SizedBox(
