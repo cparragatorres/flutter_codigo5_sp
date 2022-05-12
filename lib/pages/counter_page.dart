@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CounterPage extends StatefulWidget {
   const CounterPage({Key? key}) : super(key: key);
@@ -12,6 +13,27 @@ class _CounterPageState extends State<CounterPage> {
   int _counter = 0;
 
   @override
+  initState(){
+    super.initState();
+    _getNumber();
+  }
+
+  _saveNumber() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt("counter", _counter);
+  }
+
+  _getNumber() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _counter = prefs.getInt("counter") ?? 0;
+    setState(() {
+
+    });
+  }
+
+
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -20,6 +42,7 @@ class _CounterPageState extends State<CounterPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           _counter++;
+          _saveNumber();
           setState(() {
 
           });
