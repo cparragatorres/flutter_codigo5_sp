@@ -22,19 +22,26 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-        future: getNumberMandarina(),
-        builder: (BuildContext context, AsyncSnapshot snap){
-          if(snap.hasData){
-            int numero = snap.data;
-            return Center(
-              child: Text("$numero"),
-            );
-          }
-          return Center(
-            child: Text("Cargando..."),
-          );
-        },
+      appBar: AppBar(
+        backgroundColor: Colors.pinkAccent,
+        title: Text("Home"),
+      ),
+      drawer: Drawer(
+        elevation: 0,
+        child: Column(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.pinkAccent,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage("https://images.pexels.com/photos/2531608/pexels-photo-2531608.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"),
+                ),
+              ),
+              child: Container(),
+            ),
+          ],
+        ),
       ),
     );
   }
