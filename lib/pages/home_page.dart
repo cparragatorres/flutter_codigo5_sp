@@ -119,16 +119,32 @@ class _HomePageState extends State<HomePage> {
               height: 10.0,
             ),
             TextField(
-              decoration: InputDecoration(
-                hintText: "Full name"
-              ),
+              decoration: InputDecoration(hintText: "Full name"),
             ),
             const SizedBox(
               height: 20.0,
             ),
             TextField(
-              decoration: InputDecoration(
-                  hintText: "Address"
+              decoration: InputDecoration(hintText: "Address"),
+            ),
+            const SizedBox(
+              height: 30.0,
+            ),
+            SizedBox(
+              width: double.infinity,
+              height: 50.0,
+              child: ElevatedButton.icon(
+                icon: Icon(Icons.save),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  primary: Colors.black87,
+                ),
+                onPressed: () {},
+                label: const Text(
+                  "Save data",
+                ),
               ),
             ),
           ],
