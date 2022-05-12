@@ -12,6 +12,8 @@ class _HomePageState extends State<HomePage> {
   //then
   //async - await
 
+  int n = 10;
+
   @override
   initState(){
     super.initState();
@@ -164,6 +166,7 @@ class _HomePageState extends State<HomePage> {
                   primary: Colors.black87,
                 ),
                 onPressed: () {
+                  n = 10000;
                   _saveData();
                 },
                 label: const Text(
