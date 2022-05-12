@@ -8,6 +8,9 @@ class CounterPage extends StatefulWidget {
 }
 
 class _CounterPageState extends State<CounterPage> {
+
+  int _counter = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +19,10 @@ class _CounterPageState extends State<CounterPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
+          _counter++;
+          setState(() {
 
+          });
         },
         child: Icon(Icons.add),
       ),
@@ -25,7 +31,7 @@ class _CounterPageState extends State<CounterPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "0",
+              _counter.toString(),
               style: TextStyle(
                 fontSize: 40,
               ),
