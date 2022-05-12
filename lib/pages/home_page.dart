@@ -12,6 +12,13 @@ class _HomePageState extends State<HomePage> {
   //then
   //async - await
 
+  @override
+  initState(){
+    super.initState();
+    _getDataFull();
+  }
+
+
   Future<int> getNumberMandarina() async {
     return Future.delayed(Duration(seconds: 3), () {
       return 100;
@@ -23,12 +30,13 @@ class _HomePageState extends State<HomePage> {
     prefs.setString("name", "Ramón Lopez Arias");
     prefs.setInt("age", 20);
     print("Guardando...");
-    String name = prefs.getString("name") ?? "-";
-    int age = prefs.getInt("age") ?? 0;
-    print(name);
-    print(age);
   }
 
+  _getDataFull() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    print(prefs.getString("name"));
+    print(prefs.getInt("age"));
+  }
 
 
   @override
