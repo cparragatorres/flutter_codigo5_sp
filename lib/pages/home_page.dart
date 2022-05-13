@@ -16,6 +16,7 @@ class _HomePageState extends State<HomePage> {
   TextEditingController _fullNameController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
   bool darkMode = false;
+  int gender = 1;
 
   @override
   initState() {
@@ -180,14 +181,24 @@ class _HomePageState extends State<HomePage> {
             RadioListTile(
               title: Text("Male"),
               value: 1,
-              groupValue: 1,
-              onChanged: (value) {},
+              groupValue: gender,
+              onChanged: (int? value) {
+                gender = value!;
+                setState(() {
+
+                });
+              },
             ),
             RadioListTile(
               title: Text("Female"),
               value: 2,
-              groupValue: 1,
-              onChanged: (value) {},
+              groupValue: gender,
+              onChanged: (int? value) {
+                gender = value!;
+                setState(() {
+
+                });
+              },
             ),
             const SizedBox(
               height: 30.0,
