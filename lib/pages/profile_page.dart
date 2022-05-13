@@ -23,7 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
     getData();
   }
 
-  getData() async{
+  Future<void> getData() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     fullName = prefs.getString("fullName") ?? "";
     address = prefs.getString("address") ?? "";
@@ -34,7 +34,10 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
-
+  Future<String> getDataTest() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString("fullName") ?? "";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +80,17 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
       ),
+      // body: FutureBuilder(
+      //   future: getDataTest(),
+      //   builder: (BuildContext context, AsyncSnapshot snap){
+      //     if(snap.hasData){
+      //       return Center(child: Text(snap.data));
+      //     }
+      //     return Center(
+      //       child: Text("Cargando"),
+      //     );
+      //   },
+      // ),
     );
   }
 }

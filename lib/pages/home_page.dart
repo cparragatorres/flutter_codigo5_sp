@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo5_sp/pages/profile_page.dart';
+import 'package:flutter_codigo5_sp/utils/sp_global.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,6 +20,10 @@ class _HomePageState extends State<HomePage> {
   bool darkMode = false;
   int gender = 1;
 
+  SPGlobal mandarina = SPGlobal();
+
+
+
   @override
   initState() {
     super.initState();
@@ -31,13 +36,20 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  _saveData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString("fullName", _fullNameController.text);
-    prefs.setString("address", _addressController.text);
-    prefs.setBool("darkMode", darkMode);
-    prefs.setInt("gender", gender);
-    print("Guardando...");
+  _saveData() {
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // prefs.setString("fullName", _fullNameController.text);
+    // prefs.setString("address", _addressController.text);
+    // prefs.setBool("darkMode", darkMode);
+    // prefs.setInt("gender", gender);
+    // print("Guardando...");
+
+
+
+    mandarina.fullName = _fullNameController.text;
+
+
+
   }
 
   _getDataFull() async {

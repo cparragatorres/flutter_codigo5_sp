@@ -3,8 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo5_sp/pages/counter_page.dart';
 import 'package:flutter_codigo5_sp/pages/home_page.dart';
+import 'package:flutter_codigo5_sp/utils/sp_global.dart';
 
-void main(){
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  SPGlobal prefx = SPGlobal();
+  await prefx.initShared();
   runApp(MyApp());
 }
 
