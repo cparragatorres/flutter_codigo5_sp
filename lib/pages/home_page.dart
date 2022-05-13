@@ -15,15 +15,13 @@ class _HomePageState extends State<HomePage> {
   int n = 10;
   TextEditingController _fullNameController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
-
-
+  bool darkMode = false;
 
   @override
-  initState(){
+  initState() {
     super.initState();
     _getDataFull();
   }
-
 
   Future<int> getNumberMandarina() async {
     return Future.delayed(Duration(seconds: 3), () {
@@ -31,23 +29,21 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  _saveData() async{
+  _saveData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("fullName", _fullNameController.text);
     prefs.setString("address", _addressController.text);
     print("Guardando...");
   }
 
-  _getDataFull() async{
+  _getDataFull() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     print(prefs.getString("fullName"));
     print(prefs.getString("address"));
 
     _fullNameController.text = prefs.getString("fullName") ?? "";
     _addressController.text = prefs.getString("address") ?? "";
-
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +135,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "Settings",
               style: TextStyle(
                 fontSize: 32,
@@ -160,6 +156,38 @@ class _HomePageState extends State<HomePage> {
             TextField(
               controller: _addressController,
               decoration: InputDecoration(hintText: "Address"),
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            SwitchListTile(
+              title: Text("Dark Mode"),
+              value: darkMode,
+              onChanged: (bool value) {
+                darkMode = value;
+                setState(() {});
+              },
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            const Text(
+              "Gender",
+              style: TextStyle(
+                fontSize: 18.0,
+              ),
+            ),
+            RadioListTile(
+              title: Text("Male"),
+              value: 1,
+              groupValue: 1,
+              onChanged: (value) {},
+            ),
+            RadioListTile(
+              title: Text("Female"),
+              value: 2,
+              groupValue: 1,
+              onChanged: (value) {},
             ),
             const SizedBox(
               height: 30.0,
