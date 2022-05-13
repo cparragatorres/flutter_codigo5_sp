@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo5_sp/pages/profile_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
@@ -111,6 +112,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ListTile(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfilePage()));
+              },
               leading: Icon(
                 Icons.person,
               ),
