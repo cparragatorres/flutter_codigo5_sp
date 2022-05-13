@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -10,6 +11,28 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
 
+  String fullName = "";
+  String address = "";
+  bool darkMode = false;
+  int gender = 1;
+
+
+  @override
+  initState(){
+    super.initState();
+    getData();
+  }
+
+  getData() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    fullName = prefs.getString("fullName") ?? "";
+    address = prefs.getString("address") ?? "";
+    darkMode = prefs.getBool("darkMode") ?? false;
+    gender = prefs.getInt("gender") ?? 1;
+    setState(() {
+
+    });
+  }
 
 
 
@@ -32,12 +55,12 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               ListTile(
                 leading: Icon(Icons.person),
-                title: Text("Elvis Barrionuevo"),
+                title: Text(fullName),
                 subtitle: Text("Full name"),
               ),
               ListTile(
                 leading: Icon(Icons.location_on),
-                title: Text("Av. Cayma 223"),
+                title: Text(address),
                 subtitle: Text("Address"),
               ),
               ListTile(
