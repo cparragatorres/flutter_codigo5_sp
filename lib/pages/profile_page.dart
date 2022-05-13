@@ -40,7 +40,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: darkMode ? Colors.black : Colors.pinkAccent,
         title: Text("Profile"),
       ),
       body: Center(
@@ -65,12 +65,12 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               ListTile(
                 leading: Icon(Icons.dark_mode),
-                title: Text("Active"),
+                title: Text(darkMode ? "On" : "Off"),
                 subtitle: Text("Dark mode"),
               ),
               ListTile(
                 leading: Icon(Icons.circle),
-                title: Text("Male"),
+                title: Text(gender == 1 ? "Male" : "Female"),
                 subtitle: Text("Gender"),
               ),
             ],
