@@ -47,7 +47,9 @@ class _HomePageState extends State<HomePage> {
 
 
     mandarina.fullName = _fullNameController.text;
-
+    mandarina.address = _addressController.text;
+    mandarina.darkMode = darkMode;
+    mandarina.gender = gender;
 
 
   }
@@ -158,101 +160,103 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              "Settings",
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.w500,
-                color: Color(0xff424242),
-              ),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            TextField(
-              controller: _fullNameController,
-              decoration: InputDecoration(hintText: "Full name"),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            TextField(
-              controller: _addressController,
-              decoration: InputDecoration(hintText: "Address"),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            SwitchListTile(
-              title: Text("Dark Mode"),
-              value: darkMode,
-              onChanged: (bool value) {
-                darkMode = value;
-                setState(() {});
-              },
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            const Text(
-              "Gender",
-              style: TextStyle(
-                fontSize: 18.0,
-              ),
-            ),
-            RadioListTile(
-              title: Text("Male"),
-              value: 1,
-              groupValue: gender,
-              onChanged: (int? value) {
-                gender = value!;
-                setState(() {
-
-                });
-              },
-            ),
-            RadioListTile(
-              title: Text("Female"),
-              value: 2,
-              groupValue: gender,
-              onChanged: (int? value) {
-                gender = value!;
-                setState(() {
-
-                });
-              },
-            ),
-
-
-            const SizedBox(
-              height: 30.0,
-            ),
-            SizedBox(
-              width: double.infinity,
-              height: 50.0,
-              child: ElevatedButton.icon(
-                icon: Icon(Icons.save),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  primary: Colors.black87,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Settings",
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xff424242),
                 ),
-                onPressed: () {
-                  n = 10000;
-                  _saveData();
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              TextField(
+                controller: _fullNameController,
+                decoration: InputDecoration(hintText: "Full name"),
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              TextField(
+                controller: _addressController,
+                decoration: InputDecoration(hintText: "Address"),
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              SwitchListTile(
+                title: Text("Dark Mode"),
+                value: darkMode,
+                onChanged: (bool value) {
+                  darkMode = value;
+                  setState(() {});
                 },
-                label: const Text(
-                  "Save data",
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              const Text(
+                "Gender",
+                style: TextStyle(
+                  fontSize: 18.0,
                 ),
               ),
-            ),
-          ],
+              RadioListTile(
+                title: Text("Male"),
+                value: 1,
+                groupValue: gender,
+                onChanged: (int? value) {
+                  gender = value!;
+                  setState(() {
+
+                  });
+                },
+              ),
+              RadioListTile(
+                title: Text("Female"),
+                value: 2,
+                groupValue: gender,
+                onChanged: (int? value) {
+                  gender = value!;
+                  setState(() {
+
+                  });
+                },
+              ),
+
+
+              const SizedBox(
+                height: 30.0,
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: 50.0,
+                child: ElevatedButton.icon(
+                  icon: Icon(Icons.save),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    primary: Colors.black87,
+                  ),
+                  onPressed: () {
+                    n = 10000;
+                    _saveData();
+                  },
+                  label: const Text(
+                    "Save data",
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

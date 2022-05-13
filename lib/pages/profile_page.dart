@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo5_sp/utils/sp_global.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -16,23 +17,25 @@ class _ProfilePageState extends State<ProfilePage> {
   bool darkMode = false;
   int gender = 1;
 
+  SPGlobal matasquita = SPGlobal();
+
 
   @override
   initState(){
     super.initState();
-    getData();
+    // getData();
   }
 
-  Future<void> getData() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    fullName = prefs.getString("fullName") ?? "";
-    address = prefs.getString("address") ?? "";
-    darkMode = prefs.getBool("darkMode") ?? false;
-    gender = prefs.getInt("gender") ?? 1;
-    setState(() {
-
-    });
-  }
+  // Future<void> getData() async{
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   fullName = prefs.getString("fullName") ?? "";
+  //   address = prefs.getString("address") ?? "";
+  //   darkMode = prefs.getBool("darkMode") ?? false;
+  //   gender = prefs.getInt("gender") ?? 1;
+  //   setState(() {
+  //
+  //   });
+  // }
 
   Future<String> getDataTest() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -58,22 +61,22 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               ListTile(
                 leading: Icon(Icons.person),
-                title: Text(fullName),
+                title: Text("#${matasquita.fullName}"),
                 subtitle: Text("Full name"),
               ),
               ListTile(
                 leading: Icon(Icons.location_on),
-                title: Text(address),
+                title: Text(matasquita.address),
                 subtitle: Text("Address"),
               ),
               ListTile(
                 leading: Icon(Icons.dark_mode),
-                title: Text(darkMode ? "On" : "Off"),
+                title: Text(matasquita.darkMode ? "On" : "Off"),
                 subtitle: Text("Dark mode"),
               ),
               ListTile(
                 leading: Icon(Icons.circle),
-                title: Text(gender == 1 ? "Male" : "Female"),
+                title: Text(matasquita.gender == 1 ? "Male" : "Female"),
                 subtitle: Text("Gender"),
               ),
             ],
