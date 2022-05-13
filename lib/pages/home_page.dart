@@ -54,21 +54,24 @@ class _HomePageState extends State<HomePage> {
 
   }
 
-  _getDataFull() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    print(prefs.getString("fullName"));
-    print(prefs.getString("address"));
-    print(prefs.getBool("darkMode"));
-    print(prefs.getInt("gender"));
+  _getDataFull() {
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // print(prefs.getString("fullName"));
+    // print(prefs.getString("address"));
+    // print(prefs.getBool("darkMode"));
+    // print(prefs.getInt("gender"));
 
-    _fullNameController.text = prefs.getString("fullName") ?? "";
-    _addressController.text = prefs.getString("address") ?? "";
-    darkMode = prefs.getBool("darkMode") ?? false;
-    gender = prefs.getInt("gender") ?? 1;
+    // _fullNameController.text = prefs.getString("fullName") ?? "";
+    // _addressController.text = prefs.getString("address") ?? "";
+    // darkMode = prefs.getBool("darkMode") ?? false;
+    // gender = prefs.getInt("gender") ?? 1;
 
-    setState(() {
+    _fullNameController.text = mandarina.fullName;
+    _addressController.text = mandarina.address;
 
-    });
+    // setState(() {
+    //
+    // });
 
   }
 
