@@ -42,6 +42,10 @@ class _HomePageState extends State<HomePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     print(prefs.getString("fullName"));
     print(prefs.getString("address"));
+
+    _fullNameController.text = prefs.getString("fullName") ?? "";
+    _addressController.text = prefs.getString("address") ?? "";
+
   }
 
 
