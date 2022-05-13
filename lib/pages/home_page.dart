@@ -34,6 +34,8 @@ class _HomePageState extends State<HomePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("fullName", _fullNameController.text);
     prefs.setString("address", _addressController.text);
+    prefs.setBool("darkMode", darkMode);
+    prefs.setInt("gender", gender);
     print("Guardando...");
   }
 
@@ -41,9 +43,18 @@ class _HomePageState extends State<HomePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     print(prefs.getString("fullName"));
     print(prefs.getString("address"));
+    print(prefs.getBool("darkMode"));
+    print(prefs.getInt("gender"));
 
     _fullNameController.text = prefs.getString("fullName") ?? "";
     _addressController.text = prefs.getString("address") ?? "";
+    darkMode = prefs.getBool("darkMode") ?? false;
+    gender = prefs.getInt("gender") ?? 1;
+
+    setState(() {
+
+    });
+
   }
 
   @override
@@ -200,6 +211,8 @@ class _HomePageState extends State<HomePage> {
                 });
               },
             ),
+
+
             const SizedBox(
               height: 30.0,
             ),
