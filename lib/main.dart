@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo5_sp/pages/counter_page.dart';
 import 'package:flutter_codigo5_sp/pages/home_page.dart';
+import 'package:flutter_codigo5_sp/pages/profile_page.dart';
 import 'package:flutter_codigo5_sp/utils/sp_global.dart';
 
 void main() async{
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: ProfilePage(),
     );
   }
 }
